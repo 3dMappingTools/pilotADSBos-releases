@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "product": "pilotADSBos",
+  "generated": "2026-07-28T00:00:00Z",
+  "tier2": {
+    "version": "0.24.21",
+    "filename": "pilotadsbos-0.24.21-release-bef73f0.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.21/pilotadsbos-0.24.21-release-bef73f0.img.xz",
+    "sha256": "22a12922effa88a1c517ab4f225ffde41543b24e22ebb2c290a73f89124406f7",
+    "size": 593965144,
+    "released": "2026-07-28T17:51:53Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.21",
+    "instructions_url": "https://pilotadsb.com/pages/byod",
+    "notes": "Reflash required. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher. Do not decompress the file first."
+  }
+}
