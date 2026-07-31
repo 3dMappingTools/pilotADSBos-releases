@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "product": "pilotADSBos",
+  "generated": "2026-07-30T21:15:00Z",
+  "tier1": {
+    "version": "0.24.23",
+    "arch": "arm64",
+    "min_ota_from": "0.24.21",
+    "url": "https://updates.pilotadsb.com/ota/0.24.23/dpcore-arm64",
+    "sha256": "a30ce09fc79bf175f6e89a9362b896ff2b8d096e963fe15ddf0cb8ac4d837e49",
+    "size": 13519647,
+    "signature": "z2nkz_T7A2FjI47w0Phz2OKx6mBaf6YAR1xEhiYR_MoazII3hYB-m5gZy5ZtiSsl0wdm4KGKVQZb3VNfJKUBDA",
+    "notes": "Fixes the BLE device name iOS reads, adds status fields, and stops the 5-second status frame being cut short on iPhones. Installs from the app in a few seconds; no card removal."
+  },
+  "tier2": {
+    "version": "0.24.23",
+    "filename": "pilotadsbos-0.24.23-release-dcfe611.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.23/pilotadsbos-0.24.23-release-dcfe611.img.xz",
+    "sha256": "40cd7081c495e7daf1bd6d1a64c08b702d793ded80910d9bf43c31bbba709247",
+    "size": 595352168,
+    "released": "2026-07-29T23:58:15Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.23",
+    "instructions_url": "https://pilotadsb.com/pages/byod",
+    "notes": "Reflash required. Download the .img.xz to a computer and write it to the microSD card with Raspberry Pi Imager or BalenaEtcher. Do not decompress the file first."
+  }
+}
