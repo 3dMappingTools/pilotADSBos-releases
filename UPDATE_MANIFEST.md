@@ -42,6 +42,20 @@ never as a reason to fall back to tier 2.**
 | `schema` | Manifest format version. Currently `1`. **If an app sees a `schema` it does not know, it must do nothing** — not guess, not partially parse. That is what lets us change this file later without breaking older apps. |
 | `product` | **Must be matched exactly: `pilotADSBos`** (capital ADSB, lowercase os). See the fail-closed rule below. |
 | `generated` | When this manifest was last written (UTC, RFC 3339). |
+| `severity` | **Optional.** `"critical"` or `"recommended"`. **OMIT ENTIRELY for ordinary releases** — an absent value means "recommended", so a routine build needs no field. Present at the top level or inside `tier1`; the app reads either. |
+
+### `severity` — styling only, never timing
+
+Tim's ruling: *"If an update was considered 'Critical' then you would include that in the update
+notices (both locations)"* — the startup panel and the Receiver Settings row.
+
+**It changes STYLING ONLY. It must never shorten or override the user's 1–24 h snooze.** Tim again:
+*"Their safety in using the product is more important than an update."* A receiver mid-flight is
+doing its job; an update notice is not more important than that.
+
+Set it deliberately and rarely. A release flagged critical every time teaches people to ignore the
+flag, which costs us the one time it matters.
+
 
 ### `tier1` — over-the-air `dpcore` replacement
 
