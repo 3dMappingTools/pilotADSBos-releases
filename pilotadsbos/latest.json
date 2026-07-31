@@ -1,16 +1,16 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-07-30T21:15:00Z",
+  "generated": "2026-07-31T21:00:00Z",
   "tier1": {
-    "version": "0.24.23",
+    "version": "0.24.28",
     "arch": "arm64",
     "min_ota_from": "0.24.21",
-    "url": "https://updates.pilotadsb.com/ota/0.24.23/dpcore-arm64",
-    "sha256": "a30ce09fc79bf175f6e89a9362b896ff2b8d096e963fe15ddf0cb8ac4d837e49",
-    "size": 13519647,
-    "signature": "z2nkz_T7A2FjI47w0Phz2OKx6mBaf6YAR1xEhiYR_MoazII3hYB-m5gZy5ZtiSsl0wdm4KGKVQZb3VNfJKUBDA",
-    "notes": "Fixes the BLE device name iOS reads, adds status fields, and stops the 5-second status frame being cut short on iPhones. Installs from the app in a few seconds; no card removal."
+    "url": "https://updates.pilotadsb.com/ota/0.24.28/dpcore-arm64",
+    "sha256": "6cbdc13f29d8c2c30f8d6951ee476313a9ebfa25a77df4881df35d060e9851c5",
+    "size": 13524722,
+    "signature": "uItpvIxKNW0yphTresrbN5yTjoXYn2i89CGqdcB0LnTiMNA6G5BpHT1cv9VB-orGn0LHFzk4F_D5IQpRqgi6BA",
+    "notes": "Fixes status updates being cut short, a receiver that could forget its settings, and faster recovery when a WiFi network disappears. Installs from the app in a few seconds; no card removal."
   },
   "tier2": {
     "version": "0.24.23",
