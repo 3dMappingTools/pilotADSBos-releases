@@ -1,26 +1,26 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-08-02T14:15:00Z",
+  "generated": "2026-08-03T03:35:00Z",
   "tier1": {
     "version": "0.24.31",
     "arch": "arm64",
     "min_ota_from": "0.24.21",
-    "url": "https://updates.pilotadsb.com/ota/0.24.31/dpcore-arm64",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.31/dpcore-0.24.31-arm64",
     "sha256": "f327e4d88e1967f205a3c959af2e7be1f8e7c6ceb48cd2bae5d5b864553a6d36",
     "size": 13596478,
     "signature": "ruHrMuZvl0GUwDshvf1PwiuBJBdfQank97aunlJVfvSREM98LYjtgJDNnb8Ysa-YKyPgJiMQovaDDmVyQcv6Dw",
     "notes": "Fixes first-time setup failing to save on some app versions. Installs from the app in a few seconds; no card removal."
   },
   "tier2": {
-    "version": "0.24.23",
-    "filename": "pilotadsbos-0.24.23-release-dcfe611.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.23/pilotadsbos-0.24.23-release-dcfe611.img.xz",
-    "sha256": "40cd7081c495e7daf1bd6d1a64c08b702d793ded80910d9bf43c31bbba709247",
-    "size": 595352168,
-    "released": "2026-07-29T23:58:15Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.23",
+    "version": "0.24.31",
+    "filename": "pilotadsbos-0.24.31-release-a317b78.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.31/pilotadsbos-0.24.31-release-a317b78.img.xz",
+    "sha256": "a973d80c61a7d3a8cbcdf200e9192a8f19d9ffc603bc387a6776c4bd092f21d9",
+    "size": 601309116,
+    "released": "2026-08-03T03:25:14Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.31",
     "instructions_url": "https://pilotadsb.com/pages/byod",
-    "notes": "Reflash required. Download the .img.xz to a computer and write it to the microSD card with Raspberry Pi Imager or BalenaEtcher. Do not decompress the file first."
+    "notes": "Reflash required. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher -- not Raspberry Pi Imager, whose WiFi/hostname presets conflict with the receiver. Do not decompress the file first."
   }
 }
