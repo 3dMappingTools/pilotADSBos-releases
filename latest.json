@@ -1,16 +1,16 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-08-02T10:50:00Z",
+  "generated": "2026-08-02T14:15:00Z",
   "tier1": {
-    "version": "0.24.30",
+    "version": "0.24.31",
     "arch": "arm64",
     "min_ota_from": "0.24.21",
-    "url": "https://updates.pilotadsb.com/ota/0.24.30/dpcore-arm64",
-    "sha256": "ac1ed6468263a0102700e9fc7169550dc5d6a9902364391c49f95227d17bdcef",
-    "size": 13525502,
-    "signature": "S7Lc1iKSv8GxWiskMpMj-KaqOHH9caU8ASeBp63ScekXpMY-pNkDD9-YW_5mk8bMlHRG1PFQWaf7zAS_zdNaDQ",
-    "notes": "Fixes a receiver that could refuse first-time setup, and settings that could be left half-applied by a rejected write. Installs from the app in a few seconds; no card removal."
+    "url": "https://updates.pilotadsb.com/ota/0.24.31/dpcore-arm64",
+    "sha256": "f327e4d88e1967f205a3c959af2e7be1f8e7c6ceb48cd2bae5d5b864553a6d36",
+    "size": 13596478,
+    "signature": "ruHrMuZvl0GUwDshvf1PwiuBJBdfQank97aunlJVfvSREM98LYjtgJDNnb8Ysa-YKyPgJiMQovaDDmVyQcv6Dw",
+    "notes": "Fixes first-time setup failing to save on some app versions. Installs from the app in a few seconds; no card removal."
   },
   "tier2": {
     "version": "0.24.23",
