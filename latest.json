@@ -1,16 +1,26 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-08-06T20:48:17Z",
+  "generated": "2026-08-11T00:25:00Z",
+  "tier1": {
+    "version": "0.24.42",
+    "arch": "arm64",
+    "min_ota_from": "0.24.40",
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.42/dpcore-arm64",
+    "sha256": "e628b64be0e9359f2806bc8e2727ee21f4777e735ce5bb459e425dda081fa00f",
+    "size": 13693253,
+    "signature": "EHAmbfrPnvzkOt_oTkvII8I1ahDxZ3MFsO6AoxW73cFve3KkmR6rCW9Q9s-YXgQCgnGCtn9jWnYXJf-JSjEDCQ",
+    "notes": "Fixes a fault that could leave Bluetooth refusing every connection until the receiver was unplugged. Installs from the app in a few seconds; no card removal."
+  },
   "tier2": {
-    "version": "0.24.40",
-    "filename": "pilotadsbos-0.24.40-release-c52adef.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.40/pilotadsbos-0.24.40-release-c52adef.img.xz",
-    "sha256": "2bdb07a2d799e2c58a932bfebeff2be3894f8a7ebe3f7c5cf935e274bdc18513",
-    "size": 599228300,
-    "released": "2026-08-06T19:47:36Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.40",
+    "version": "0.24.42",
+    "filename": "pilotadsbos-0.24.42-release-a9952bd.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.42/pilotadsbos-0.24.42-release-a9952bd.img.xz",
+    "sha256": "fa90471d0335a682a99737ec2fbbe9c6fbbf6eacd274187171c114caaef8af6f",
+    "size": 594436784,
+    "released": "2026-08-10T23:40:40Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.42",
     "instructions_url": "https://pilotadsb.com/pages/byod",
-    "notes": "Fixes a fault that made Bluetooth unreliable on Raspberry Pi 4 receivers -- most visibly with iPhones and iPads. Write the image to your microSD card with BalenaEtcher (not Raspberry Pi Imager). Writing a card resets the receiver to factory settings, so note anything you have customised first."
+    "notes": "Reflash required. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher -- not Raspberry Pi Imager, whose WiFi/hostname presets conflict with the receiver. Do not decompress the file first."
   }
 }

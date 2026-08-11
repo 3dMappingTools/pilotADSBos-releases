@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-08-03T03:35:00Z",
+  "generated": "2026-08-11T00:25:00Z",
   "tier1": {
-    "version": "0.24.31",
+    "version": "0.24.42",
     "arch": "arm64",
-    "min_ota_from": "0.24.21",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.31/dpcore-0.24.31-arm64",
-    "sha256": "f327e4d88e1967f205a3c959af2e7be1f8e7c6ceb48cd2bae5d5b864553a6d36",
-    "size": 13596478,
-    "signature": "ruHrMuZvl0GUwDshvf1PwiuBJBdfQank97aunlJVfvSREM98LYjtgJDNnb8Ysa-YKyPgJiMQovaDDmVyQcv6Dw",
-    "notes": "Fixes first-time setup failing to save on some app versions. Installs from the app in a few seconds; no card removal."
+    "min_ota_from": "0.24.40",
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.42/dpcore-arm64",
+    "sha256": "e628b64be0e9359f2806bc8e2727ee21f4777e735ce5bb459e425dda081fa00f",
+    "size": 13693253,
+    "signature": "EHAmbfrPnvzkOt_oTkvII8I1ahDxZ3MFsO6AoxW73cFve3KkmR6rCW9Q9s-YXgQCgnGCtn9jWnYXJf-JSjEDCQ",
+    "notes": "Fixes a fault that could leave Bluetooth refusing every connection until the receiver was unplugged. Installs from the app in a few seconds; no card removal."
   },
   "tier2": {
-    "version": "0.24.31",
-    "filename": "pilotadsbos-0.24.31-release-a317b78.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.31/pilotadsbos-0.24.31-release-a317b78.img.xz",
-    "sha256": "a973d80c61a7d3a8cbcdf200e9192a8f19d9ffc603bc387a6776c4bd092f21d9",
-    "size": 601309116,
-    "released": "2026-08-03T03:25:14Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.31",
+    "version": "0.24.42",
+    "filename": "pilotadsbos-0.24.42-release-a9952bd.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.42/pilotadsbos-0.24.42-release-a9952bd.img.xz",
+    "sha256": "fa90471d0335a682a99737ec2fbbe9c6fbbf6eacd274187171c114caaef8af6f",
+    "size": 594436784,
+    "released": "2026-08-10T23:40:40Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.42",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Reflash required. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher -- not Raspberry Pi Imager, whose WiFi/hostname presets conflict with the receiver. Do not decompress the file first."
   }
