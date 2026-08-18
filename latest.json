@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-08-11T18:45:00Z",
+  "generated": "2026-08-18T20:10:00Z",
   "tier1": {
-    "version": "0.24.44",
+    "version": "0.24.56",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.44/dpcore-arm64",
-    "sha256": "0bf95d15bda5f637769e9e898dcf93701aa145d60ac85f3518efc7ea6b9b4681",
-    "size": 13693669,
-    "signature": "99swv-0qoj96fnp1FM44rpfv_JGkw18FA0aPXB_kfIUSY2MQn1RlxbPd5zDsEwSAcxczQGYHoFuPOtYgjs34DQ",
-    "notes": "Fixes a false \"could not join that network\" message when connecting the receiver to WiFi -- the join was usually succeeding. Also fixes Bluetooth being left unable to accept connections until the unit was unplugged. Installs from the app in a few seconds; no card removal."
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.56/dpcore-arm64",
+    "sha256": "739d41b259d4fdbdabf3f179d31f721767910487d40b74d476e7445c0f68b212",
+    "size": 13703727,
+    "signature": "fHbxmBddZTxTwq77unF1pERUzN3whRHdA1ByCPYl33yCFC80_BMhClox4bAbSQY8ZeZAFnAaFy5rZ52vpB0kCw",
+    "notes": "Fixes a phone-hotspot connection that worked and was then dropped about a minute later -- most often on the second attempt after switching the receiver on. Adds a WiFi network picker: the receiver scans for networks and offers the list to the app, including your own phone's hotspot, which a phone cannot show you itself. Installs from the app in a few seconds; no card removal."
   },
   "tier2": {
-    "version": "0.24.44",
-    "filename": "pilotadsbos-0.24.44-release-70a6604.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.44/pilotadsbos-0.24.44-release-70a6604.img.xz",
-    "sha256": "ce4e777c7a3b93b7b8a82e4a9fd37e8d79651f6a5c2cc78c131ba2b0843d8b2c",
-    "size": 593256428,
-    "released": "2026-08-11T18:37:25Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.44",
+    "version": "0.24.56",
+    "filename": "pilotadsbos-0.24.56-release-8cc2a63.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.56/pilotadsbos-0.24.56-release-8cc2a63.img.xz",
+    "sha256": "4365557d83d40da5faad059ee936341f300f746f7f9d61993c7bcf1f1113e175",
+    "size": 589875656,
+    "released": "2026-08-18T19:54:41Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.56",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Reflash required only if your receiver is older than 0.24.40 -- newer units can take this over the air from the app. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher -- not Raspberry Pi Imager, whose WiFi/hostname presets conflict with the receiver. Do not decompress the file first."
   }
