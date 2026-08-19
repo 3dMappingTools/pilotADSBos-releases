@@ -45,6 +45,22 @@ jobs:
       # The file in the repo, NOT the raw URL: raw.githubusercontent.com serves
       # Cache-Control max-age=300 through a CDN, and a stale edge copy has
       # already made this look fixed once when it was not.
+      - name: there is EXACTLY ONE latest.json
+        run: |
+          # A second copy is not a duplicate, it is a SECOND SOURCE OF TRUTH that
+          # drifts silently. One really existed at pilotadsbos/latest.json: last
+          # updated 2026-08-11, frozen at 0.24.44 while the root file moved on to
+          # 0.24.56 -- and the BYOD download page was reading THAT one, so the
+          # website advertised a version a week older than the app did. Its own
+          # code comment claimed both read "the SAME manifest". They did not.
+          n=$(find . -name latest.json -not -path './.git/*' | tee /dev/stderr | wc -l)
+          if [ "$n" -ne 1 ]; then
+            echo "FAIL  found $n latest.json files; there must be exactly ONE, at the repo root."
+            exit 1
+          fi
+          [ -f ./latest.json ] || { echo "FAIL  the single latest.json is not at the repo root"; exit 1; }
+          echo "OK    exactly one manifest, at the root"
+
       - name: latest.json is valid and self-consistent
         run: |
           python3 - <<'PY'
