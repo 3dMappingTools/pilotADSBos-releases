@@ -1,0 +1,115 @@
+# Does latest.json actually describe the newest published release?
+#
+# WHY THIS EXISTS
+# ---------------
+# latest.json sat on 0.24.44 for a WEEK while nine releases were built, tested
+# and published past it. Nothing errored, and nothing could have: a stale
+# manifest is perfectly valid JSON describing a real, installable release. The
+# app reads only latest.json -- correctly, it is the published contract -- so
+# the staleness was silent for every customer simultaneously. It was found by
+# accident, because someone happened to know a newer version existed.
+#
+# There is a script for this (tools/verify-publish.sh in the OS repo), but a
+# script is a HABIT, and habits do not survive six quiet months or a change of
+# hands. Tim, 2026-08-19: "What if we go six months with no update, and then we
+# finally push one out?" Exactly right -- by then nobody remembers the script.
+# So the check runs here, where publishing happens, and nobody has to remember
+# anything.
+#
+# It runs on three triggers so no single lapse hides a stale manifest:
+#   - a release is published        (the moment it can go wrong)
+#   - latest.json is pushed         (catches a bad edit immediately)
+#   - weekly                        (catches everything the other two missed,
+#                                    including a release published while the
+#                                    workflow was broken or disabled)
+name: manifest matches release
+
+on:
+  release:
+    types: [published, edited]
+  push:
+    paths: ['latest.json', 'ota/**']
+  schedule:
+    - cron: '17 13 * * 1'   # Mondays, 13:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The file in the repo, NOT the raw URL: raw.githubusercontent.com serves
+      # Cache-Control max-age=300 through a CDN, and a stale edge copy has
+      # already made this look fixed once when it was not.
+      - name: latest.json is valid and self-consistent
+        run: |
+          python3 - <<'PY'
+          import json, os, sys, hashlib
+          fail = []
+          d = json.load(open('latest.json'))
+
+          if d.get('product') != 'pilotADSBos':
+              fail.append(f"product is {d.get('product')!r}, want 'pilotADSBos' "
+                          "(mismatch is fail-closed and SILENT in the app)")
+
+          t1, t2 = d.get('tier1') or {}, d.get('tier2') or {}
+          v1, v2 = t1.get('version'), t2.get('version')
+          if not v1: fail.append('tier1.version missing')
+          if not v2: fail.append('tier2.version missing')
+          if v1 and v2 and v1 != v2:
+              fail.append(f'tier1 ({v1}) and tier2 ({v2}) disagree')
+
+          # A bumped version beside a stale sha256 installs the WRONG binary and
+          # still reads correctly, so verify the bytes actually on disk.
+          if v1:
+              p = f'ota/{v1}/dpcore-arm64'
+              if not os.path.exists(p):
+                  fail.append(f'{p} does not exist, but tier1.version says {v1}')
+              else:
+                  h = hashlib.sha256(open(p,'rb').read()).hexdigest()
+                  if h != t1.get('sha256'):
+                      fail.append(f'{p} sha256 {h} != manifest {t1.get("sha256")} '
+                                  '- receivers will REFUSE this update')
+                  size = os.path.getsize(p)
+                  if size != t1.get('size'):
+                      fail.append(f'{p} is {size} bytes, manifest says {t1.get("size")}')
+              if v1 not in (t1.get('url') or ''):
+                  fail.append(f'tier1.url does not point inside {v1}: {t1.get("url")}')
+          if not t1.get('signature'):
+              fail.append('tier1.signature missing - every receiver rejects the update')
+
+          for f in fail: print(f'FAIL  {f}')
+          if fail: sys.exit(1)
+          print(f'OK    manifest is self-consistent at {v1}')
+          PY
+
+      # The part that would have caught the week of staleness: compare the
+      # manifest against the newest release actually published here.
+      - name: manifest matches the newest published release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          latest_tag=$(gh release list --repo "$GITHUB_REPOSITORY" --limit 20 \
+                        --json tagName,isDraft,isPrerelease \
+                        --jq '[.[] | select(.isDraft==false and .isPrerelease==false)][0].tagName')
+          man=$(python3 -c "import json;print(json.load(open('latest.json'))['tier2']['version'])")
+          echo "newest published release : ${latest_tag:-<none>}"
+          echo "latest.json says         : $man"
+          if [ -z "$latest_tag" ]; then
+            echo "no published releases yet - nothing to compare"; exit 0
+          fi
+          if [ "$latest_tag" != "$man" ]; then
+            echo
+            echo "FAIL  latest.json advertises $man but $latest_tag is published."
+            echo "      Every customer is being offered $man and will never hear"
+            echo "      about $latest_tag. This is silent in the app - it is not an"
+            echo "      error state, just an old version that looks perfectly valid."
+            echo
+            echo "      Fix: update latest.json (tier1 AND tier2), then re-run."
+            exit 1
+          fi
+          echo "OK    the fleet is being offered $latest_tag"
