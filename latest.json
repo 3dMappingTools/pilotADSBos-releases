@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-08-20T00:30:00Z",
+  "generated": "2026-08-22T23:45:00Z",
   "tier1": {
-    "version": "0.24.57",
+    "version": "0.24.58",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.57/dpcore-arm64",
-    "sha256": "6571c49e258c632f9dfab6bb75f8593ec9eecc5670999c20b782234a8e93bf55",
-    "size": 13704049,
-    "signature": "G_MBUKANBX-aNf_56YDY7k7MyFSSZRGwca540pG27IAA6MrDyGVevFb2QNNOaNyNI75qixpm4faI8v0gd_fxAg",
-    "notes": "Fixes an update that installed correctly but could still report that it had failed. Tapping Install more than once sent the receiver the same update several times over; they collided and the receiver answered one of them with an error, while the update itself was already succeeding. The receiver now accepts one update at a time and says so plainly instead. Nothing unsafe ever happened -- every update is signature-checked before it is installed. Installs from the app in a few seconds; no card removal."
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.58/dpcore-arm64",
+    "sha256": "6804db39261c8b2ee6936a832bfe7865559ba8a87ed2fc00853086ee67b88b27",
+    "size": 13705037,
+    "signature": "hMeJEOk5MqIDPj2XkmJsLHyBLvy70ywnkdJJXOtiCuNlRUpUzI8W2PcN-1_4oKqOqhMzsGutVhwDSfHf2oFEDg",
+    "notes": "Fixes settings being lost when a receiver is unplugged mid-save, and -- more importantly -- a receiver that then refused to save anything at all, failing first-time setup with \"storage error\" until the card was rewritten. Settings are now written durably, and an empty settings file is treated as a new receiver rather than a damaged one. Installs from the app in a few seconds; no card removal."
   },
   "tier2": {
-    "version": "0.24.57",
-    "filename": "pilotadsbos-0.24.57-release-3920c62.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.57/pilotadsbos-0.24.57-release-3920c62.img.xz",
-    "sha256": "9124e1b3844039f3950588c9b5f31c2f7fab0c3dbfe87e2ffde098b8bfa9b79a",
-    "size": 590503152,
-    "released": "2026-08-20T00:14:09Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.57",
+    "version": "0.24.58",
+    "filename": "pilotadsbos-0.24.58-release-f88d3dd.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.58/pilotadsbos-0.24.58-release-f88d3dd.img.xz",
+    "sha256": "a778eff52b787d964de7eae7e3453c50cdb984ba6a32e43b1bb1d1d6947488e1",
+    "size": 594158860,
+    "released": "2026-08-22T23:33:54Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.58",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Reflash required only if your receiver is older than 0.24.40 -- newer units can take this over the air from the app. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher -- not Raspberry Pi Imager, whose WiFi/hostname presets conflict with the receiver. Do not decompress the file first."
   }
