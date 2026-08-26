@@ -105,27 +105,78 @@ jobs:
 
       # The part that would have caught the week of staleness: compare the
       # manifest against the newest release actually published here.
+      #
+      # GRACE PERIOD ON THE `release` TRIGGER ONLY (2026-08-26, Tim).
+      # -----------------------------------------------------------
+      # Publishing a release and updating latest.json are two separate acts,
+      # minutes apart, in that order -- you cannot write a manifest describing an
+      # asset that is not uploaded yet. So this check fired on EVERY normal
+      # release, went red, and went green a couple of minutes later once the
+      # manifest landed. Observed on 0.24.60 (fail 00:22, fail 00:23, pass
+      # 00:25) and again on 0.24.62 (fail 12:35, pass 12:37).
+      #
+      # That is worse than it sounds. A guard that cries wolf on every correct
+      # release is one people stop reading, and the ONE time it means something
+      # it will look exactly like the ten times it did not. The failure this
+      # workflow exists to catch is a manifest that stays stale for a WEEK --
+      # not one that is stale for ninety seconds while a human finishes the job.
+      #
+      # So on `release` we WAIT and re-check, and only fail if the manifest is
+      # still wrong after the window. Every other trigger stays strict and fails
+      # immediately: a push that leaves the manifest stale is a mistake NOW, and
+      # the weekly run is the backstop that must never be forgiving.
+      #
+      # The re-read is `git show origin/main:latest.json`, not the raw URL:
+      # raw.githubusercontent.com serves max-age=300 through a CDN and a stale
+      # edge copy has already made this look fixed once when it was not.
       - name: manifest matches the newest published release
         env:
           GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
         run: |
-          latest_tag=$(gh release list --repo "$GITHUB_REPOSITORY" --limit 20 \
-                        --json tagName,isDraft,isPrerelease \
-                        --jq '[.[] | select(.isDraft==false and .isPrerelease==false)][0].tagName')
-          man=$(python3 -c "import json;print(json.load(open('latest.json'))['tier2']['version'])")
-          echo "newest published release : ${latest_tag:-<none>}"
-          echo "latest.json says         : $man"
+          latest_tag=$(gh release list --repo "$GITHUB_REPOSITORY" --limit 20                         --json tagName,isDraft,isPrerelease                         --jq '[.[] | select(.isDraft==false and .isPrerelease==false)][0].tagName')
           if [ -z "$latest_tag" ]; then
             echo "no published releases yet - nothing to compare"; exit 0
           fi
-          if [ "$latest_tag" != "$man" ]; then
-            echo
-            echo "FAIL  latest.json advertises $man but $latest_tag is published."
-            echo "      Every customer is being offered $man and will never hear"
-            echo "      about $latest_tag. This is silent in the app - it is not an"
-            echo "      error state, just an old version that looks perfectly valid."
-            echo
-            echo "      Fix: update latest.json (tier1 AND tier2), then re-run."
-            exit 1
+          echo "newest published release : $latest_tag"
+
+          # One attempt for strict triggers; poll for 10 minutes on a release.
+          if [ "$EVENT" = "release" ]; then
+            tries=21; sleep_s=30
+            echo "trigger=release - allowing up to 10 min for latest.json to be updated"
+          else
+            tries=1; sleep_s=0
+            echo "trigger=$EVENT - strict, no grace period"
           fi
-          echo "OK    the fleet is being offered $latest_tag"
+
+          i=1
+          while [ "$i" -le "$tries" ]; do
+            if [ "$i" -gt 1 ]; then
+              sleep "$sleep_s"
+              # Re-read from the branch, not the checkout: the manifest we are
+              # waiting for is pushed AFTER this workflow started.
+              git fetch -q origin main || true
+              man=$(git show origin/main:latest.json 2>/dev/null                     | python3 -c "import json,sys;print(json.load(sys.stdin)['tier2']['version'])" 2>/dev/null)
+            else
+              man=$(python3 -c "import json;print(json.load(open('latest.json'))['tier2']['version'])")
+            fi
+            echo "  attempt $i/$tries - latest.json says: ${man:-<unreadable>}"
+            if [ "$latest_tag" = "$man" ]; then
+              echo "OK    the fleet is being offered $latest_tag"
+              exit 0
+            fi
+            i=$((i+1))
+          done
+
+          echo
+          echo "FAIL  latest.json advertises ${man:-<unreadable>} but $latest_tag is published."
+          echo "      Every customer is being offered ${man:-<unreadable>} and will never hear"
+          echo "      about $latest_tag. This is silent in the app - it is not an"
+          echo "      error state, just an old version that looks perfectly valid."
+          echo
+          if [ "$EVENT" = "release" ]; then
+            echo "      This waited 10 minutes for the manifest and it never arrived,"
+            echo "      so this is NOT the normal publish-then-update lag."
+          fi
+          echo "      Fix: update latest.json (tier1 AND tier2), then re-run."
+          exit 1
