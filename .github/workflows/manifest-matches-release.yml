@@ -142,8 +142,20 @@ jobs:
 
           # One attempt for strict triggers; poll for 10 minutes on a release.
           if [ "$EVENT" = "release" ]; then
-            tries=21; sleep_s=30
-            echo "trigger=release - allowing up to 10 min for latest.json to be updated"
+            # 30 min, not 10. MEASURED, not guessed: on 0.24.64 the real gap
+            # between publishing the release and pushing the manifest was ~19
+            # minutes -- publish, hand off, sign tier 1, push -- and a 10 min
+            # window failed on a release that was being handled correctly the
+            # whole time. That is the crying-wolf failure this grace period
+            # exists to remove, reintroduced by picking the number optimistically.
+            #
+            # A longer window costs nothing in detection power. The failure being
+            # guarded against is a manifest that is NEVER updated -- latest.json
+            # sat on 0.24.44 for a WEEK -- and 30 minutes is no worse than 10 at
+            # catching that, while being far less likely to fire on a release
+            # someone is in the middle of finishing.
+            tries=61; sleep_s=30
+            echo "trigger=release - allowing up to 30 min for latest.json to be updated"
           else
             tries=1; sleep_s=0
             echo "trigger=$EVENT - strict, no grace period"
@@ -175,7 +187,7 @@ jobs:
           echo "      error state, just an old version that looks perfectly valid."
           echo
           if [ "$EVENT" = "release" ]; then
-            echo "      This waited 10 minutes for the manifest and it never arrived,"
+            echo "      This waited 30 minutes for the manifest and it never arrived,"
             echo "      so this is NOT the normal publish-then-update lag."
           fi
           echo "      Fix: update latest.json (tier1 AND tier2), then re-run."
