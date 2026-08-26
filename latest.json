@@ -1,26 +1,26 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-08-26T12:45:00Z",
+  "generated": "2026-08-26T15:10:00Z",
   "tier1": {
-    "version": "0.24.62",
+    "version": "0.24.64",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.62/dpcore-arm64",
-    "sha256": "989808eef028d768f325a7f28501ce6dfb9feff7f5f3f2b34c21f779dfc37360",
-    "size": 13786604,
-    "signature": "wj3qJ-wrbQ9moQdLYz4qs0HGk9w9h3a5lT3lBKgcCWRDBAGXpZmyblyj1Kv2GrdLEWTvuIMEbOvSnoMP_wmWBA",
-    "notes": "Third-party EFBs now receive traffic on a shared WiFi network with nothing to configure -- put the receiver on your home or hangar WiFi, join your tablet to the same network, and apps that simply listen for traffic will find it. Nothing changes for the pilotADSB app. Also fixes a WiFi network scan that could report \"no reply\" on a scan that was working normally. Installs from the app in a few seconds; no card removal."
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.64/dpcore-arm64",
+    "sha256": "456a51a48007715e78cab8fc8bd42a1c2b82ad32d4216012870bf2c1bfef7031",
+    "size": 13786781,
+    "signature": "JfiTykU-cW_0m6362-XkGkXVGEtVTA8Aa7F95kyQVGV79izpUewtrrmRzc17unEaz7ecLClurC9cOXavtb6fCA",
+    "notes": "Fixes receiver status failing to appear on an iPhone or iPad connected by Bluetooth alone -- the status update had grown past what iOS accepts, and an update that does not fit is discarded rather than delivered partly. Status is now compact enough to arrive intact on every device, with no loss of information. Please update the pilotADSB app at the same time: an older app may show blank detail fields until it is updated. Traffic and alerts are unaffected. Installs from the app in a few seconds; no card removal."
   },
   "tier2": {
-    "version": "0.24.62",
-    "filename": "pilotadsbos-0.24.62-release-1185e88.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.62/pilotadsbos-0.24.62-release-1185e88.img.xz",
-    "sha256": "82c9aef20eab19e0a3ce6217360666b62379f96530d7f0a8cc69f4b8857a2eb2",
-    "size": 587124280,
-    "released": "2026-08-26T12:35:34Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.62",
+    "version": "0.24.64",
+    "filename": "pilotadsbos-0.24.64-release-54ee364.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.64/pilotadsbos-0.24.64-release-54ee364.img.xz",
+    "sha256": "cfd30bf5d277810394f72bb425ed2a555a4c25afe078317321afb1753b417ee1",
+    "size": 593496072,
+    "released": "2026-08-26T14:50:57Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.64",
     "instructions_url": "https://pilotadsb.com/pages/byod",
-    "notes": "Reflash required only if your receiver is older than 0.24.40 -- newer units can take this over the air from the app. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher -- not Raspberry Pi Imager, whose WiFi/hostname presets conflict with the receiver. Do not decompress the file first."
+    "notes": "Reflash required only if your receiver is older than 0.24.40 -- newer units can take this over the air from the app. Update the pilotADSB app at the same time. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher -- not Raspberry Pi Imager, whose WiFi/hostname presets conflict with the receiver. Do not decompress the file first."
   }
 }
