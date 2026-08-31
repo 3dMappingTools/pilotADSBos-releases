@@ -122,9 +122,21 @@ jobs:
       # not one that is stale for ninety seconds while a human finishes the job.
       #
       # So on `release` we WAIT and re-check, and only fail if the manifest is
-      # still wrong after the window. Every other trigger stays strict and fails
-      # immediately: a push that leaves the manifest stale is a mistake NOW, and
-      # the weekly run is the backstop that must never be forgiving.
+      # still wrong after the window.
+      #
+      # 2026-08-31: `push` now gets a SHORT window too (5 min vs 30). The
+      # reasoning above applied to it all along and was simply left on the other
+      # trigger -- on 0.24.67 the release went live at 18:24:03, the manifest
+      # was pushed at 18:25:08, and a push-triggered run inside that 90-second
+      # gap went red on a correctly-handled release. Publishing is
+      # release-then-push by necessity, so that would have fired on EVERY
+      # release from here on.
+      #
+      # ⚠️ THE WEEKLY `schedule` RUN STAYS STRICT, with no window at all. That
+      # is the backstop against the failure this whole workflow exists for -- a
+      # manifest that is NEVER updated (latest.json sat on 0.24.44 for a WEEK).
+      # A scheduled run has no publish in flight to excuse it, so a mismatch
+      # there is always real. Never grant it a grace period.
       #
       # The re-read is `git show origin/main:latest.json`, not the raw URL:
       # raw.githubusercontent.com serves max-age=300 through a CDN and a stale
@@ -156,6 +168,20 @@ jobs:
             # someone is in the middle of finishing.
             tries=61; sleep_s=30
             echo "trigger=release - allowing up to 30 min for latest.json to be updated"
+          elif [ "$EVENT" = "push" ]; then
+            # 5 minutes on a push (2026-08-31, Tim). SHORT on purpose -- long
+            # enough to cover the normal publish-then-push order, far tighter
+            # than the 30 min a release gets, and it still fails fast on a push
+            # that genuinely leaves the manifest stale.
+            #
+            # Why this was added: on 0.24.67 the release went live at 18:24:03
+            # and latest.json was pushed at 18:25:08. A push-triggered run
+            # landed inside that 90-second window and went red on a release
+            # that was being handled correctly. That is the SAME crying-wolf
+            # failure the release grace period was created to remove -- it was
+            # simply left on the other trigger.
+            tries=11; sleep_s=30
+            echo "trigger=push - allowing up to 5 min for latest.json to be updated"
           else
             tries=1; sleep_s=0
             echo "trigger=$EVENT - strict, no grace period"
@@ -189,6 +215,9 @@ jobs:
           if [ "$EVENT" = "release" ]; then
             echo "      This waited 30 minutes for the manifest and it never arrived,"
             echo "      so this is NOT the normal publish-then-update lag."
+          elif [ "$EVENT" = "push" ]; then
+            echo "      This waited 5 minutes for the manifest and it never arrived,"
+            echo "      so this is NOT the normal publish-then-push lag."
           fi
           echo "      Fix: update latest.json (tier1 AND tier2), then re-run."
           exit 1
