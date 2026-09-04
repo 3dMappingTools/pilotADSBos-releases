@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-03T18:51:58Z",
+  "generated": "2026-09-04T20:25:16Z",
   "tier1": {
-    "version": "0.24.68",
+    "version": "0.24.70",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.68/dpcore-arm64",
-    "sha256": "93d81dcfa000ca09fc862e4005b1c53fc4151e883ea200a85a9365fdabb885e4",
-    "size": 13805405,
-    "signature": "QgGmrRlHlZKJsDrx1Hg2XZXOWdXfNGASaKzE3-RyAhTsoGRszcZo9-EuyBNW-6oE6oJqkh78NnpTQdgh1tEqAQ",
-    "notes": "Installs in a few seconds from the app, no card removal. Fixes a fault where the receiver could stop accepting connections after the app had been left in the background -- for example when the phone's screen locked. The receiver worked out that the phone had stopped listening and then held the connection open anyway, which made it invisible to any device trying to connect, and the only way out was to unplug it. It now releases the connection and starts advertising again, and the app reconnects on its own in about five seconds. Also repairs the maintenance command for clearing a stuck Bluetooth connection, which had never worked. Includes everything from 0.24.67."
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.70/dpcore-arm64",
+    "sha256": "619f4d5aa945a2ad8e30cb971be30f4a4a3e753079904728f466c80d48654943",
+    "size": 13889147,
+    "signature": "kQiOUjCRJTKxMJkTscfKkvDFn8TpfpN7yqGH5Nk9USFPFtFAZIasl7c5stwZKR4yvOL7OwS1PkfsoitCxbsiCg",
+    "notes": "Installs in a few seconds from the app, no card removal. Lets the receiver exchange much larger Bluetooth packets, which fixes configuration commands that were too big to send and previously failed silently. The receiver had been limited to the smallest packet size Bluetooth allows -- a limit it was imposing on itself -- so every connection was capped far below what the hardware supports. It now uses the full size and confirms the change with the Bluetooth controller before relying on it. Ordinary use is unaffected: this is the packet size a standard Bluetooth setup on this hardware already uses. Includes everything from 0.24.68."
   },
   "tier2": {
-    "version": "0.24.68",
-    "filename": "pilotadsbos-0.24.68-release-e9c13c1.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.68/pilotadsbos-0.24.68-release-e9c13c1.img.xz",
-    "sha256": "ea028e5e1c0a2a280d2d676b3d35fb04c1a68b58c6cb7a547867a18326bd9ae2",
-    "size": 593956976,
-    "released": "2026-09-03T18:50:54Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.68",
+    "version": "0.24.70",
+    "filename": "pilotadsbos-0.24.70-release-9175a88.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.70/pilotadsbos-0.24.70-release-9175a88.img.xz",
+    "sha256": "4333b8269428b5c59f22d973c11c37e3c024d5134e7d98f0fbae8313974daa5f",
+    "size": 593596360,
+    "released": "2026-09-04T20:25:16Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.70",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Write this to the card for the complete release. Your settings do NOT survive a reflash, so you will run first-time setup again. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher -- not Raspberry Pi Imager, whose WiFi/hostname presets conflict with the receiver. Do not decompress the file first."
   }
