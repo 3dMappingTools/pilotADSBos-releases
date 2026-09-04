@@ -21,6 +21,6 @@
     "released": "2026-09-04T20:25:16Z",
     "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.70",
     "instructions_url": "https://pilotadsb.com/pages/byod",
-    "notes": "Write this to the card for the complete release. Your settings do NOT survive a reflash, so you will run first-time setup again. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher -- not Raspberry Pi Imager, whose WiFi/hostname presets conflict with the receiver. Do not decompress the file first."
+    "notes": "Write this to the card for the complete release. Your settings do NOT survive a reflash, so you will run first-time setup again. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher. Do not decompress the file first."
   }
 }
