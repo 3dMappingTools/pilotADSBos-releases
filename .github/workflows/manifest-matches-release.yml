@@ -145,12 +145,38 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           EVENT: ${{ github.event_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
           latest_tag=$(gh release list --repo "$GITHUB_REPOSITORY" --limit 20                         --json tagName,isDraft,isPrerelease                         --jq '[.[] | select(.isDraft==false and .isPrerelease==false)][0].tagName')
           if [ -z "$latest_tag" ]; then
             echo "no published releases yet - nothing to compare"; exit 0
           fi
           echo "newest published release : $latest_tag"
+
+          # EDITING AN OLD RELEASE SAYS NOTHING ABOUT THE CURRENT MANIFEST.
+          #
+          # A `release: edited` event checks out THAT RELEASE'S TAG, where
+          # latest.json is -- correctly, permanently -- the version that was
+          # current back then. Comparing it to today's newest release is
+          # guaranteed to fail, and says nothing about what customers are being
+          # offered right now.
+          #
+          # 2026-09-04: stripping an obsolete "Raspberry Pi Imager" line from
+          # the notes of 16 old releases fired this on each one. Four went red
+          # (0.24.57, 0.24.58, 0.24.60, 0.24.62) while the live manifest was
+          # correct the entire time, and Tim got a run-failed email for every
+          # one. That is exactly the crying-wolf failure the grace periods below
+          # exist to remove -- arriving through a trigger nobody had considered.
+          #
+          # ⚠️ This guard CANNOT retroactively fix those four. A release event
+          # runs the workflow file FROM THE TAG, so an old tag runs its own old
+          # copy of this file forever. It protects tags cut from here on.
+          if [ "$EVENT" = "release" ] && [ -n "$RELEASE_TAG" ] && [ "$RELEASE_TAG" != "$latest_tag" ]; then
+            echo "SKIP  this event is an edit to $RELEASE_TAG, which is not the newest"
+            echo "      release ($latest_tag). That tag's latest.json is a historical"
+            echo "      snapshot; comparing it to today proves nothing. Not a failure."
+            exit 0
+          fi
 
           # One attempt for strict triggers; poll for 10 minutes on a release.
           if [ "$EVENT" = "release" ]; then
