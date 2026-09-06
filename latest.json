@@ -1,26 +1,26 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-06T21:45:20Z",
+  "generated": "2026-09-06T22:26:41Z",
   "tier1": {
-    "version": "0.24.71",
+    "version": "0.24.72",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.71/dpcore-arm64",
-    "sha256": "015c4e3fff9124ebd443a188b8c76067a19684563720b0cf87b0f68937dc3990",
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.72/dpcore-arm64",
+    "sha256": "3381b3582409d6464374e6f7877ca5a89522c2bd501849e202fd3401388716ee",
     "size": 13886802,
-    "signature": "ulKOKpPjhnYudpXzKp1YVpXg-xhaQla8b-IFfiVATCHLdZAPMqq8DWbpbGM29UbYDmJat1VtDKxo_P09lk48AQ",
-    "notes": "Installs in a few seconds from the app, no card removal. The receiver's EFB licence now controls third-party EFB software properly. Previously that licence only applied to software that announced itself on the network, so anything that simply joined the receiver's WiFi and listened received traffic whether the receiver was licensed or not. Receivers we ship are licensed before they leave, so their owners see no change. Our own apps are always served, over WiFi and Bluetooth, licensed or not -- a receiver you own can never be starved of the app it was bought for, and Bluetooth is never restricted. Also reports whether a Remote ID module is fitted, so an app can show a drone display only on hardware that has one. Includes everything from 0.24.70."
+    "signature": "z1Wn0pUo3A1WhD8xkITH35b1QaseVzUCmkg5iNyFwsCp2kJh_F8P8X7jLsCt08GJ1Tgzf5Hz2BOmRBHIA5OgCA",
+    "notes": "Installs in a few seconds from the app, no card removal. Includes everything from 0.24.71: the receiver's EFB licence now controls third-party EFB software, while our own apps are always served over WiFi and Bluetooth whether licensed or not, and Bluetooth is never restricted. Receivers we ship are licensed before they leave, so their owners see no change. The receiver also reports whether a Remote ID module is fitted, so an app can show drone features only on hardware that has one. NOTE: recognising a Remote ID module on a freshly written card needs the full image below, not this update -- the serial port it uses is created when the card is written."
   },
   "tier2": {
-    "version": "0.24.71",
-    "filename": "pilotadsbos-0.24.71-release-ce394f5.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.71/pilotadsbos-0.24.71-release-ce394f5.img.xz",
-    "sha256": "3468e157fd4d16da654b141fcdfe1c0a1e288ab30d50236ba397c6882d55385b",
-    "size": 595730344,
-    "released": "2026-09-06T21:45:20Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.71",
+    "version": "0.24.72",
+    "filename": "pilotadsbos-0.24.72-release-a2a9eb8.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.72/pilotadsbos-0.24.72-release-a2a9eb8.img.xz",
+    "sha256": "81cd312e29f9ccf33aeeb63a8b8ba040082a9b524a96e8516bd9e5fd2c1de0c9",
+    "size": 595194800,
+    "released": "2026-09-06T22:26:41Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.72",
     "instructions_url": "https://pilotadsb.com/pages/byod",
-    "notes": "Write this to the card for the complete release. Your settings do NOT survive a reflash, so you will run first-time setup again -- and on this release that includes the EFB licence, so a re-imaged receiver needs activating again before third-party EFB software will work. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher. Do not decompress the file first."
+    "notes": "Write this to the card for the complete release. This is the version that recognises a Remote ID module on a freshly written card -- it creates the serial port the module talks on, which an in-app update cannot do. Your settings do NOT survive a reflash, so you will run first-time setup again, and that includes the EFB licence: a re-imaged receiver needs activating again before third-party EFB software will work. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher. Do not decompress the file first."
   }
 }
