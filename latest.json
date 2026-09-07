@@ -1,26 +1,26 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-06T22:26:41Z",
+  "generated": "2026-09-07T19:19:27Z",
   "tier1": {
-    "version": "0.24.72",
+    "version": "0.24.73",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.72/dpcore-arm64",
-    "sha256": "3381b3582409d6464374e6f7877ca5a89522c2bd501849e202fd3401388716ee",
-    "size": 13886802,
-    "signature": "z1Wn0pUo3A1WhD8xkITH35b1QaseVzUCmkg5iNyFwsCp2kJh_F8P8X7jLsCt08GJ1Tgzf5Hz2BOmRBHIA5OgCA",
-    "notes": "Installs in a few seconds from the app, no card removal. Includes everything from 0.24.71: the receiver's EFB licence now controls third-party EFB software, while our own apps are always served over WiFi and Bluetooth whether licensed or not, and Bluetooth is never restricted. Receivers we ship are licensed before they leave, so their owners see no change. The receiver also reports whether a Remote ID module is fitted, so an app can show drone features only on hardware that has one. NOTE: recognising a Remote ID module on a freshly written card needs the full image below, not this update -- the serial port it uses is created when the card is written."
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.73/dpcore-arm64",
+    "sha256": "5176b7874ad53aecbe273d26fc0e6fe2b18a995fd250a0357b78dfe32c78f6f4",
+    "size": 13886690,
+    "signature": "XZ8wJFCC3U7ldTu8UvsL7vUOtrSp_gfHSJ_TY57y11ltH49Wf15fC6mTEMHWBWhO1Hc9PtBxSTyS-cE1M-YOAA",
+    "notes": "Installs in a few seconds from the app, no card removal. The receiver now checks for a Remote ID module at start-up and reports what it finds, the same way it reports which radios, AHRS and pressure sensors are present -- previously a receiver with a module fitted reported that it had none unless a setting was turned on by hand. Detection is based on the module reporting in, so a receiver without one still reports none. Remote ID is not a shipping feature yet. Includes everything from 0.24.72: the receiver's EFB licence controls third-party EFB software over WiFi, while our own apps are always served over WiFi and Bluetooth whether licensed or not, and Bluetooth is never restricted."
   },
   "tier2": {
-    "version": "0.24.72",
-    "filename": "pilotadsbos-0.24.72-release-a2a9eb8.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.72/pilotadsbos-0.24.72-release-a2a9eb8.img.xz",
-    "sha256": "81cd312e29f9ccf33aeeb63a8b8ba040082a9b524a96e8516bd9e5fd2c1de0c9",
-    "size": 595194800,
-    "released": "2026-09-06T22:26:41Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.72",
+    "version": "0.24.73",
+    "filename": "pilotadsbos-0.24.73-release-7f0c276.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.73/pilotadsbos-0.24.73-release-7f0c276.img.xz",
+    "sha256": "625ed3122b5ab1e0b9b1e100591e55f055e32902dc94c9a46264f2b6dbb90027",
+    "size": 595222140,
+    "released": "2026-09-07T19:19:27Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.73",
     "instructions_url": "https://pilotadsb.com/pages/byod",
-    "notes": "Write this to the card for the complete release. This is the version that recognises a Remote ID module on a freshly written card -- it creates the serial port the module talks on, which an in-app update cannot do. Your settings do NOT survive a reflash, so you will run first-time setup again, and that includes the EFB licence: a re-imaged receiver needs activating again before third-party EFB software will work. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher. Do not decompress the file first."
+    "notes": "Write this to the card for the complete release. Your settings do NOT survive a reflash, so you will run first-time setup again -- and that includes the EFB licence, so a re-imaged receiver needs activating again before third-party EFB software will work. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher. Do not decompress the file first."
   }
 }
