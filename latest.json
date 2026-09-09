@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-07T19:19:27Z",
+  "generated": "2026-09-09T02:57:51Z",
   "tier1": {
-    "version": "0.24.73",
+    "version": "0.24.74",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.73/dpcore-arm64",
-    "sha256": "5176b7874ad53aecbe273d26fc0e6fe2b18a995fd250a0357b78dfe32c78f6f4",
-    "size": 13886690,
-    "signature": "XZ8wJFCC3U7ldTu8UvsL7vUOtrSp_gfHSJ_TY57y11ltH49Wf15fC6mTEMHWBWhO1Hc9PtBxSTyS-cE1M-YOAA",
-    "notes": "Installs in a few seconds from the app, no card removal. The receiver now checks for a Remote ID module at start-up and reports what it finds, the same way it reports which radios, AHRS and pressure sensors are present -- previously a receiver with a module fitted reported that it had none unless a setting was turned on by hand. Detection is based on the module reporting in, so a receiver without one still reports none. Remote ID is not a shipping feature yet. Includes everything from 0.24.72: the receiver's EFB licence controls third-party EFB software over WiFi, while our own apps are always served over WiFi and Bluetooth whether licensed or not, and Bluetooth is never restricted."
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.74/dpcore-arm64",
+    "sha256": "be1d4e209b265bbea998af24036990942e0889194a7af9445731a69db8a9e8f3",
+    "size": 13884415,
+    "signature": "W8TiwLMp-kL2vort79WDA8keBojm143HDSRa6lBs2soVDxpoYRa4baU9f5Ro3wFp7EtlFKj1OhvcNSM2pV1IAA",
+    "notes": "Installs in a few seconds from the app, no card removal. Fixes a fault where any device that connected over Bluetooth could stop the receiver's Bluetooth service with one ordinary-looking pair of requests -- no PIN was needed, and the receiver kept running but sent nothing over Bluetooth until it was restarted. No unit is known to have hit this in the field. The receiver also now recognises a GPS that is powered and correctly listing the satellites overhead but hearing none of them: it reports that instead of silently never producing a position, and after five minutes power-cycles the GPS to try to recover it. A GPS that is merely still starting up is never touched. Includes everything from 0.24.73: the receiver finds a Remote ID module by itself at start-up, and the receiver's EFB licence controls third-party EFB software over WiFi while our own apps are always served, licensed or not, with Bluetooth never restricted."
   },
   "tier2": {
-    "version": "0.24.73",
-    "filename": "pilotadsbos-0.24.73-release-7f0c276.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.73/pilotadsbos-0.24.73-release-7f0c276.img.xz",
-    "sha256": "625ed3122b5ab1e0b9b1e100591e55f055e32902dc94c9a46264f2b6dbb90027",
-    "size": 595222140,
-    "released": "2026-09-07T19:19:27Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.73",
+    "version": "0.24.74",
+    "filename": "pilotadsbos-0.24.74-release-9734c5c.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.74/pilotadsbos-0.24.74-release-9734c5c.img.xz",
+    "sha256": "85f33dc055633716c732ff0dbe71cb3756c644ddae4836809d7328d62cdf25a5",
+    "size": 593921532,
+    "released": "2026-09-09T02:57:51Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.74",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Write this to the card for the complete release. Your settings do NOT survive a reflash, so you will run first-time setup again -- and that includes the EFB licence, so a re-imaged receiver needs activating again before third-party EFB software will work. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher. Do not decompress the file first."
   }
