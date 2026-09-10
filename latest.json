@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-09T02:57:51Z",
+  "generated": "2026-09-10T03:50:31Z",
   "tier1": {
-    "version": "0.24.74",
+    "version": "0.24.75",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.74/dpcore-arm64",
-    "sha256": "be1d4e209b265bbea998af24036990942e0889194a7af9445731a69db8a9e8f3",
-    "size": 13884415,
-    "signature": "W8TiwLMp-kL2vort79WDA8keBojm143HDSRa6lBs2soVDxpoYRa4baU9f5Ro3wFp7EtlFKj1OhvcNSM2pV1IAA",
-    "notes": "Installs in a few seconds from the app, no card removal. Fixes a fault where any device that connected over Bluetooth could stop the receiver's Bluetooth service with one ordinary-looking pair of requests -- no PIN was needed, and the receiver kept running but sent nothing over Bluetooth until it was restarted. No unit is known to have hit this in the field. The receiver also now recognises a GPS that is powered and correctly listing the satellites overhead but hearing none of them: it reports that instead of silently never producing a position, and after five minutes power-cycles the GPS to try to recover it. A GPS that is merely still starting up is never touched. Includes everything from 0.24.73: the receiver finds a Remote ID module by itself at start-up, and the receiver's EFB licence controls third-party EFB software over WiFi while our own apps are always served, licensed or not, with Bluetooth never restricted."
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.75/dpcore-arm64",
+    "sha256": "2d561a6f2314f8f5a6f0f312db4cd614905359c27750c59e56d3d1b29b13819d",
+    "size": 13885000,
+    "signature": "caI6drP73RH5DoeyrS2VxFFgRA81dhdMnAkqtsMJoWVD1EWZaG37ZMunvnIYDdToBqs-4xgnWLdThvT-43-ACQ",
+    "notes": "Installs in a few seconds from the app, no card removal. Every Bluetooth link this receiver served was running at 27 bytes per radio packet -- the smallest the Bluetooth specification allows. It now asks for 251 on each connection and gets them, confirmed on a radio capture. Traffic reaches the app in roughly a ninth as many radio packets, and writes larger than 20 bytes can now go through instead of having to be split by the sending device -- which is why some Windows machines could not write a licence to a receiver. A sending device whose own Bluetooth adapter refuses large packets will still fail; that is a limit of that adapter, not the receiver. Nothing changes in how the apps talk to the receiver. Includes everything from 0.24.74: the Bluetooth service can no longer be stopped by a connecting device, and the receiver reports a GPS that is powered and listing satellites but hearing none of them, power-cycling it after five minutes to try to recover."
   },
   "tier2": {
-    "version": "0.24.74",
-    "filename": "pilotadsbos-0.24.74-release-9734c5c.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.74/pilotadsbos-0.24.74-release-9734c5c.img.xz",
-    "sha256": "85f33dc055633716c732ff0dbe71cb3756c644ddae4836809d7328d62cdf25a5",
-    "size": 593921532,
-    "released": "2026-09-09T02:57:51Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.74",
+    "version": "0.24.75",
+    "filename": "pilotadsbos-0.24.75-release-e4c093d.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.75/pilotadsbos-0.24.75-release-e4c093d.img.xz",
+    "sha256": "23bc0318c85ccff0e4720d70ec82eecf1ce5bb160e14c722738f5c488b3c8f76",
+    "size": 597399844,
+    "released": "2026-09-10T03:50:31Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.75",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Write this to the card for the complete release. Your settings do NOT survive a reflash, so you will run first-time setup again -- and that includes the EFB licence, so a re-imaged receiver needs activating again before third-party EFB software will work. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher. Do not decompress the file first."
   }
