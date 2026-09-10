@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-10T03:50:31Z",
+  "generated": "2026-09-10T16:10:14Z",
   "tier1": {
-    "version": "0.24.75",
+    "version": "0.24.76",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.75/dpcore-arm64",
-    "sha256": "2d561a6f2314f8f5a6f0f312db4cd614905359c27750c59e56d3d1b29b13819d",
-    "size": 13885000,
-    "signature": "caI6drP73RH5DoeyrS2VxFFgRA81dhdMnAkqtsMJoWVD1EWZaG37ZMunvnIYDdToBqs-4xgnWLdThvT-43-ACQ",
-    "notes": "Installs in a few seconds from the app, no card removal. Every Bluetooth link this receiver served was running at 27 bytes per radio packet -- the smallest the Bluetooth specification allows. It now asks for 251 on each connection and gets them, confirmed on a radio capture. Traffic reaches the app in roughly a ninth as many radio packets, and writes larger than 20 bytes can now go through instead of having to be split by the sending device -- which is why some Windows machines could not write a licence to a receiver. A sending device whose own Bluetooth adapter refuses large packets will still fail; that is a limit of that adapter, not the receiver. Nothing changes in how the apps talk to the receiver. Includes everything from 0.24.74: the Bluetooth service can no longer be stopped by a connecting device, and the receiver reports a GPS that is powered and listing satellites but hearing none of them, power-cycling it after five minutes to try to recover."
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.76/dpcore-arm64",
+    "sha256": "232af9c030e3b414a68f16934f645e36c7d9cdc3d8e6dd1391e5428b76433190",
+    "size": 13885741,
+    "signature": "PndLvuM8RYI9u4qnQEzZfKPCBUo7LOm-VRBlUaEROyKfldNRVaXVrAQIWiKLhjaW0BmiCySI1cDzcEbIaHbaCg",
+    "notes": "Installs in a few seconds from the app, no card removal. Minor bug fixes."
   },
   "tier2": {
-    "version": "0.24.75",
-    "filename": "pilotadsbos-0.24.75-release-e4c093d.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.75/pilotadsbos-0.24.75-release-e4c093d.img.xz",
-    "sha256": "23bc0318c85ccff0e4720d70ec82eecf1ce5bb160e14c722738f5c488b3c8f76",
-    "size": 597399844,
-    "released": "2026-09-10T03:50:31Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.75",
+    "version": "0.24.76",
+    "filename": "pilotadsbos-0.24.76-release-aa95245.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.76/pilotadsbos-0.24.76-release-aa95245.img.xz",
+    "sha256": "e2305fab73704d49a2f66a08ebbecc191c496b735ae6b6b7d5d8b28fda47baee",
+    "size": 593690468,
+    "released": "2026-09-10T16:10:14Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.76",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Write this to the card for the complete release. Your settings do NOT survive a reflash, so you will run first-time setup again -- and that includes the EFB licence, so a re-imaged receiver needs activating again before third-party EFB software will work. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher. Do not decompress the file first."
   }
