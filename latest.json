@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-10T16:10:14Z",
+  "generated": "2026-09-13T01:26:19Z",
   "tier1": {
-    "version": "0.24.76",
+    "version": "0.24.77",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.76/dpcore-arm64",
-    "sha256": "232af9c030e3b414a68f16934f645e36c7d9cdc3d8e6dd1391e5428b76433190",
-    "size": 13885741,
-    "signature": "PndLvuM8RYI9u4qnQEzZfKPCBUo7LOm-VRBlUaEROyKfldNRVaXVrAQIWiKLhjaW0BmiCySI1cDzcEbIaHbaCg",
-    "notes": "Installs in a few seconds from the app, no card removal. Minor bug fixes."
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.77/dpcore-arm64",
+    "sha256": "cc1c500ab2d1c8d3320b544ac86b96201c0fcdf2842d6a110534c695575c1f72",
+    "size": 13887778,
+    "signature": "NbK4hSPlQkmH7Ws26PR6BcNr13KZt-1mUASlqLiY0x9dVtrv6S5siNKWjRuQ71KfjuYfnoKzSG0Ogs9f7z5qDQ",
+    "notes": "Installs in a few seconds from the app, no card removal. The attitude sensor now calibrates while taxiing instead of requiring the aircraft to be held still, and the receiver-details screen reads reliably over Bluetooth on fully-equipped units."
   },
   "tier2": {
-    "version": "0.24.76",
-    "filename": "pilotadsbos-0.24.76-release-aa95245.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.76/pilotadsbos-0.24.76-release-aa95245.img.xz",
-    "sha256": "e2305fab73704d49a2f66a08ebbecc191c496b735ae6b6b7d5d8b28fda47baee",
-    "size": 593690468,
-    "released": "2026-09-10T16:10:14Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.76",
+    "version": "0.24.77",
+    "filename": "pilotadsbos-0.24.77-release-d89ebb7.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.77/pilotadsbos-0.24.77-release-d89ebb7.img.xz",
+    "sha256": "2924bde8a95fd2d1a068865aa8a44c8468869a296a2794a98981ea582f22bac8",
+    "size": 591161000,
+    "released": "2026-09-13T01:26:19Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.77",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Write this to the card for the complete release. Your settings do NOT survive a reflash, so you will run first-time setup again -- and that includes the EFB licence, so a re-imaged receiver needs activating again before third-party EFB software will work. Download the .img.xz to a computer and write it to the microSD card with BalenaEtcher. Do not decompress the file first."
   }
