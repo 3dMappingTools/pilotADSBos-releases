@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-17T19:23:27Z",
+  "generated": "2026-09-19T14:00:23Z",
   "tier1": {
-    "version": "0.24.87",
+    "version": "0.24.90",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.87/dpcore-arm64",
-    "sha256": "ac4433bd955800abd3b978b2d9a2078cf1ac0a0db41f24a2507fd27c3a551429",
-    "size": 13975938,
-    "signature": "YT6eMVYN_78X2Chiw8-azWC02HT9VBOId7AXOzN4XNdgVx-LTjWPtsjoNadAHGgv9rBa8QhBy4YXXM8E7sy-Dw",
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.90/dpcore-arm64",
+    "sha256": "1c76cd34abe067d42ed1045e3c835e247b838be19de63f692225f6cfb359a36b",
+    "size": 16320656,
+    "signature": "wk5cjDshjxbTZJQtU1YJ4V-YH-3CDNQpFcgmLa13hWOmp061ENmB_rNILwFrw4VopzzH66Zb-zNmgdYGGxHhBA",
     "notes": "Minor bug fixes. Installs in a few seconds from the app, no card removal."
   },
   "tier2": {
-    "version": "0.24.87",
-    "filename": "pilotadsbos-0.24.87-release-95f90b6.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.87/pilotadsbos-0.24.87-release-95f90b6.img.xz",
-    "sha256": "a1c5627991aba99ae1b4c8cd7febdffeae79a27d643986ab005c8cedec4773f9",
-    "size": 593381812,
-    "released": "2026-09-17T19:23:27Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.87",
+    "version": "0.24.90",
+    "filename": "pilotadsbos-0.24.90-release-c274ce2.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.90/pilotadsbos-0.24.90-release-c274ce2.img.xz",
+    "sha256": "ff081e237ac016f2c28b4b590c343f9dedc19b08b22585218c529140641cd9c3",
+    "size": 593674808,
+    "released": "2026-09-19T14:00:23Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.90",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Minor bug fixes."
   }
