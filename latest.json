@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-20T21:29:53Z",
+  "generated": "2026-09-20T21:41:48Z",
   "tier1": {
     "version": "0.24.93",
     "arch": "arm64",
@@ -13,13 +13,13 @@
     "notes": "Minor bug fixes. Installs in a few seconds from the app, no card removal."
   },
   "tier2": {
-    "version": "0.24.90",
-    "filename": "pilotadsbos-0.24.90-release-c274ce2.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.90/pilotadsbos-0.24.90-release-c274ce2.img.xz",
-    "sha256": "ff081e237ac016f2c28b4b590c343f9dedc19b08b22585218c529140641cd9c3",
-    "size": 593674808,
-    "released": "2026-09-19T14:00:23Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.90",
+    "version": "0.24.93",
+    "filename": "pilotadsbos-0.24.93-release-ce73297.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.24.93/pilotadsbos-0.24.93-release-ce73297.img.xz",
+    "sha256": "ed672e33709faf549c2a4d493b8ec68ca2ead496c3019cd532efc1b007f9db59",
+    "size": 596663140,
+    "released": "2026-09-20T21:41:48Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.24.93",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Minor bug fixes."
   }
