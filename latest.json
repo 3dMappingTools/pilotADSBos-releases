@@ -1,15 +1,15 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-19T14:00:23Z",
+  "generated": "2026-09-20T21:29:53Z",
   "tier1": {
-    "version": "0.24.90",
+    "version": "0.24.93",
     "arch": "arm64",
     "min_ota_from": "0.24.40",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.90/dpcore-arm64",
-    "sha256": "1c76cd34abe067d42ed1045e3c835e247b838be19de63f692225f6cfb359a36b",
-    "size": 16320656,
-    "signature": "wk5cjDshjxbTZJQtU1YJ4V-YH-3CDNQpFcgmLa13hWOmp061ENmB_rNILwFrw4VopzzH66Zb-zNmgdYGGxHhBA",
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.93/dpcore-arm64",
+    "sha256": "854a7f3e474f0ede843050e7bac928b1ee8d5c7e8b9825bf0265e7ea8bb86c3f",
+    "size": 16402492,
+    "signature": "dBAzfbdBBvf_v9xaJXjM-oh8F7jpepNqa6ot_S8temBcX5COzm4E64XoVvMmNKXVaTDmAgLWVHsuaniZMho1Aw",
     "notes": "Minor bug fixes. Installs in a few seconds from the app, no card removal."
   },
   "tier2": {
