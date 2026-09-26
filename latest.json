@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-09-26T03:23:07Z",
+  "generated": "2026-09-26T17:32:02Z",
   "tier1": {
     "version": "0.24.98",
     "arch": "arm64",
-    "min_ota_from": "0.24.40",
+    "min_ota_from": "0.24.89",
     "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.24.98/dpcore-arm64",
     "sha256": "d189ea5cb36d7433c573b80d884960576affd48b9f89c08ac0d76a6752630d81",
     "size": 16554222,
