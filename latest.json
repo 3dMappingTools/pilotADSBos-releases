@@ -1,25 +1,25 @@
 {
   "schema": 1,
   "product": "pilotADSBos",
-  "generated": "2026-10-05T21:11:50Z",
+  "generated": "2026-10-06T00:08:16Z",
   "tier1": {
-    "version": "0.25.5",
+    "version": "0.25.7",
     "arch": "arm64",
     "min_ota_from": "0.24.89",
-    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.25.5/dpcore-arm64",
-    "sha256": "71e34964097f89e409fcea4ea97f4559c587c66cb7bf441207013a13a47c06e4",
-    "size": 17826787,
-    "signature": "uWErz9KeHuiCpwpWMXJk0AJDViriL9zhAG5if73Ye_YgT6LBurpkfrXs4O9wvb1tE435k7LKcU1B-rycFAMsAQ",
+    "url": "https://raw.githubusercontent.com/3dMappingTools/pilotADSBos-releases/main/ota/0.25.7/dpcore-arm64",
+    "sha256": "3b0907a204d18a2b6ebac49ab4e76682fda63ca3094741d59c61fdb03a205f6b",
+    "size": 17834438,
+    "signature": "17VRuJBaeTUbRcCqfwSSOdKNmEjU7O-mTAXs9YC-Bz6YeZFFqseD_Ca-QNSmY5c-edqsOKPbr7p6RKKCH3qPAA",
     "notes": "Minor bug fixes. Installs in a few seconds from the app, no card removal."
   },
   "tier2": {
-    "version": "0.25.5",
-    "filename": "pilotadsbos-0.25.5-release-1da99ff.img.xz",
-    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.25.5/pilotadsbos-0.25.5-release-1da99ff.img.xz",
-    "sha256": "522ee5a43e40498f6f23c403e3b8bf2fd2e1911a96bc2d5fbbbd8ffc9c936dd1",
+    "version": "0.25.7",
+    "filename": "pilotadsbos-0.25.7-release-dd9dc30.img.xz",
+    "url": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/download/0.25.7/pilotadsbos-0.25.7-release-dd9dc30.img.xz",
+    "sha256": "da8ea4333c9c3b96e6d2a41216122ab58059ea681866ef8c01262fb6c0d3fb1e",
     "size": 597791704,
-    "released": "2026-10-05T21:11:50Z",
-    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.25.5",
+    "released": "2026-10-06T00:08:16Z",
+    "release_page": "https://github.com/3dMappingTools/pilotADSBos-releases/releases/tag/0.25.7",
     "instructions_url": "https://pilotadsb.com/pages/byod",
     "notes": "Minor bug fixes."
   }
